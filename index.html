@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contratar al chofer más lindo</title>
+<meta name="description" content="Una sola vacante de copiloto. Completá la postulación y enterate si quedás.">
+<meta property="og:title" content="🚗 Formulario para contratar al chofer más lindo">
+<meta property="og:description" content="Una sola vacante de copiloto. Completá la postulación y enterate si quedás.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pedropeyser-cloud.github.io/chofer-lindo/">
+<meta property="og:image" content="https://pedropeyser-cloud.github.io/chofer-lindo/vista.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#FFF4E2">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Oswald:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#FFF4E2;
+    --papel:#FFFDF8;
+    --tinta:#231A35;
+    --tinta-2:#5B5170;
+    --amarillo:#FFC83D;
+    --coral:#FF5A6E;
+    --coral-2:#FFE1E5;
+    --azul:#1D3E92;
+    --verde:#2F9E6B;
+    --sombra:4px 4px 0 var(--tinta);
+    --radio:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"DM Sans",system-ui,sans-serif;
+    color:var(--tinta);
+    background:
+      radial-gradient(circle at 12% 8%, #FFE3A8 0, transparent 38%),
+      radial-gradient(circle at 92% 30%, #FFD3DA 0, transparent 34%),
+      var(--crema);
+    min-height:100vh;
+    line-height:1.45;
+  }
+  .wrap{max-width:660px;margin:0 auto;padding:28px 18px 80px}
+
+  /* ---------- Encabezado ---------- */
+  .franja{
+    height:14px;border-radius:8px;margin-bottom:22px;
+    background:repeating-linear-gradient(90deg,var(--tinta) 0 14px,var(--amarillo) 14px 28px);
+    border:2px solid var(--tinta);
+  }
+  .cabecera{text-align:center;margin-bottom:26px}
+  .patente{
+    display:inline-block;background:#fff;border:3px solid var(--tinta);border-radius:10px;
+    box-shadow:var(--sombra);overflow:hidden;transform:rotate(-2deg);margin-bottom:22px;
+  }
+  .patente .banda{
+    background:var(--azul);color:#fff;font:700 10px/1 "DM Sans",sans-serif;letter-spacing:.32em;
+    padding:5px 12px;display:flex;justify-content:space-between;gap:16px;
+  }
+  .patente .numero{font:600 clamp(30px,8vw,44px)/1 "Oswald",sans-serif;letter-spacing:.08em;padding:8px 22px 10px}
+  .cartel{
+    display:inline-flex;align-items:center;gap:8px;background:var(--tinta);color:var(--amarillo);
+    font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    padding:6px 12px;border-radius:999px;margin-bottom:14px;
+  }
+  .cartel .punto{width:8px;height:8px;border-radius:50%;background:var(--coral);animation:late 1.4s infinite}
+  @keyframes late{50%{opacity:.25}}
+  h1{
+    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+    font-size:clamp(34px,8.6vw,56px);line-height:.98;letter-spacing:-.02em;margin:0 0 14px;
+  }
+  h1 em{font-style:normal;color:var(--coral);position:relative;white-space:nowrap}
+  h1 em::after{
+    content:"";position:absolute;left:-2%;right:-2%;bottom:.02em;height:.22em;z-index:-1;
+    background:var(--amarillo);border-radius:4px;transform:rotate(-1deg);
+  }
+  .bajada{font-size:17px;color:var(--tinta-2);max-width:480px;margin:0 auto}
+  .bajada b{color:var(--tinta)}
+
+  /* ---------- Ruta de progreso ---------- */
+  .ruta{
+    position:sticky;top:10px;z-index:20;background:var(--papel);border:2px solid var(--tinta);
+    border-radius:14px;box-shadow:var(--sombra);padding:10px 14px 12px;margin:0 0 26px;
+  }
+  .ruta-txt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:8px}
+  .ruta-txt span:last-child{color:var(--tinta-2);font-weight:500}
+  .asfalto{position:relative;height:26px;background:#3A3346;border-radius:8px;overflow:visible}
+  .asfalto::before{
+    content:"";position:absolute;left:10px;right:34px;top:50%;height:3px;transform:translateY(-50%);
+    background:repeating-linear-gradient(90deg,#FFE9A8 0 12px,transparent 12px 24px);
+  }
+  .meta{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:18px}
+  .auto{
+    position:absolute;top:50%;left:0;font-size:24px;transform:translate(0,-58%) scaleX(-1);
+    transition:left .6s cubic-bezier(.3,1.4,.5,1);
+  }
+
+  /* ---------- Preguntas ---------- */
+  .preg{
+    background:var(--papel);border:2px solid var(--tinta);border-radius:var(--radio);
+    box-shadow:var(--sombra);padding:22px 20px 22px;margin-bottom:22px;position:relative;
+    transition:transform .2s;min-width:0;
+  }
+  .preg.hecha{border-color:var(--tinta)}
+  .preg.hecha .num{background:var(--verde);color:#fff}
+  .num{
+    position:absolute;top:-14px;left:18px;background:var(--amarillo);border:2px solid var(--tinta);
+    font:800 13px/1 "Bricolage Grotesque",sans-serif;padding:6px 10px;border-radius:999px;
+    transition:background .3s,color .3s;
+  }
+  .preg h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:22px;line-height:1.15;margin:6px 0 4px}
+  .ayuda{font-size:14.5px;color:var(--tinta-2);margin:0 0 14px}
+  .falta{display:none;color:var(--coral);font-weight:700;font-size:14px;margin-top:12px}
+  .preg.error .falta{display:block}
+  .preg.error{animation:sacudir .45s}
+  @keyframes sacudir{20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+
+  .opciones{display:flex;flex-wrap:wrap;gap:10px}
+  .op{position:relative}
+  .op input{position:absolute;opacity:0;pointer-events:none}
+  .op span{
+    display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;
+    background:#fff;border:2px solid var(--tinta);border-radius:999px;
+    padding:10px 16px;font-size:15.5px;font-weight:500;min-height:44px;
+    transition:background .15s,color .15s,transform .12s,box-shadow .15s;
+  }
+  .op span:hover{background:var(--coral-2)}
+  .op span:active{transform:scale(.97)}
+  .op input:focus-visible + span{outline:3px solid var(--azul);outline-offset:2px}
+  .op input:checked + span{background:var(--coral);color:#fff;box-shadow:2px 2px 0 var(--tinta)}
+  .op input[type=checkbox] + span::before{content:"";width:16px;height:16px;border:2px solid currentColor;border-radius:5px;flex:none}
+  .op input[type=checkbox]:checked + span::before{content:"✓";display:grid;place-items:center;font-size:12px;font-weight:800;background:#fff;color:var(--coral);border-color:#fff}
+
+  input[type=text],textarea{
+    width:100%;font:inherit;font-size:17px;color:var(--tinta);background:#fff;
+    border:2px solid var(--tinta);border-radius:12px;padding:12px 14px;
+  }
+  textarea{min-height:110px;resize:vertical}
+  input[type=text]:focus,textarea:focus{outline:3px solid var(--amarillo);outline-offset:1px}
+
+  /* Mate */
+  .mate{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
+  .taza{font-size:58px;line-height:1;position:relative;transition:transform .3s}
+  .espuma{position:absolute;left:50%;top:-6px;transform:translateX(-50%);font-size:16px;letter-spacing:-2px;opacity:0;transition:opacity .3s}
+  .veredicto{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:18px;margin:0 0 6px;min-height:1.3em}
+  input[type=range]{width:100%;accent-color:var(--coral);height:30px}
+  .extremos{display:flex;justify-content:space-between;font-size:12.5px;color:var(--tinta-2)}
+  .sub{margin-top:14px;font-size:14px;font-weight:700;margin-bottom:8px}
+
+  /* Besos: el No que se escapa */
+  .patio{
+    position:relative;height:110px;margin-top:14px;border:2px dashed #CFC6DA;border-radius:14px;
+    background:repeating-linear-gradient(45deg,transparent 0 10px,#FBF5EE 10px 20px);
+  }
+  .patio small{position:absolute;left:12px;bottom:8px;font-size:12px;color:var(--tinta-2)}
+  .no{
+    position:absolute;left:14px;top:14px;font:inherit;font-weight:700;font-size:15px;
+    background:#fff;border:2px solid var(--tinta);border-radius:999px;padding:10px 18px;cursor:pointer;
+    transition:left .22s ease,top .22s ease,transform .22s;min-height:44px;
+  }
+  .no.si{background:var(--amarillo)}
+
+  /* Botón final */
+  .enviar{
+    display:block;width:100%;font:800 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:.01em;
+    background:var(--tinta);color:var(--amarillo);border:2px solid var(--tinta);border-radius:16px;
+    padding:20px;cursor:pointer;box-shadow:5px 5px 0 var(--coral);transition:transform .12s,box-shadow .12s;
+  }
+  .enviar:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--coral)}
+  .enviar:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--coral)}
+  .letra-chica{text-align:center;font-size:12.5px;color:var(--tinta-2);margin:14px auto 0;max-width:460px}
+
+  /* ---------- Cargando ---------- */
+  .velo{
+    position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:20px;
+    background:rgba(35,26,53,.82);backdrop-filter:blur(4px);
+  }
+  .velo.ver{display:grid}
+  .caja{
+    background:var(--papel);border:2px solid var(--tinta);border-radius:20px;box-shadow:6px 6px 0 var(--amarillo);
+    width:min(420px,100%);padding:26px 22px;
+  }
+  .caja h3{font-family:"Bricolage Grotesque",sans-serif;margin:0 0 16px;font-size:22px}
+  .pasos{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+  .pasos li{display:flex;gap:10px;align-items:flex-start;font-size:15px;opacity:.3;transition:opacity .3s}
+  .pasos li.va{opacity:1}
+  .pasos li .ic{width:22px;flex:none;text-align:center}
+  .pasos li.ok .ic{color:var(--verde);font-weight:800}
+
+  /* ---------- Resultado ---------- */
+  .resultado{display:none}
+  .resultado.ver{display:block;animation:subir .6s cubic-bezier(.2,1.3,.4,1)}
+  @keyframes subir{from{opacity:0;transform:translateY(30px) scale(.97)}}
+  .credencial{
+    position:relative;background:linear-gradient(135deg,#fff 0%,#FFF7E6 100%);
+    border:3px solid var(--tinta);border-radius:22px;box-shadow:6px 6px 0 var(--tinta);
+    overflow:hidden;margin:10px 0 26px;
+  }
+  .cred-top{background:var(--azul);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .cred-top b{font:800 15px/1.1 "Bricolage Grotesque",sans-serif;letter-spacing:.06em;text-transform:uppercase}
+  .cred-top span{font-size:12px;opacity:.85}
+  .cred-cuerpo{padding:20px;display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center}
+  .foto{
+    width:96px;height:116px;border:2px solid var(--tinta);border-radius:12px;background:var(--coral-2);
+    display:grid;place-items:center;font-size:48px;
+  }
+  .cred-nombre{font:800 clamp(24px,6vw,32px)/1.05 "Bricolage Grotesque",sans-serif;margin:0 0 6px;word-break:break-word}
+  .cred-dato{font-size:14px;margin:2px 0;color:var(--tinta-2)}
+  .cred-dato b{color:var(--tinta)}
+  .estrellas{font-size:18px;letter-spacing:2px;margin-top:6px}
+  .sello{
+    position:absolute;right:14px;bottom:18px;transform:rotate(-14deg);
+    border:4px solid var(--coral);color:var(--coral);border-radius:10px;padding:6px 12px;
+    font:800 22px/1 "Bricolage Grotesque",sans-serif;letter-spacing:.08em;opacity:0;
+    animation:sellar .5s .5s forwards cubic-bezier(.2,1.6,.4,1);background:rgba(255,255,255,.7);
+  }
+  @keyframes sellar{from{opacity:0;transform:rotate(-14deg) scale(2.4)}to{opacity:.92;transform:rotate(-14deg) scale(1)}}
+  .beneficios{border-top:2px dashed #D9CFE3;padding:16px 20px 76px;font-size:14.5px}
+  .beneficios b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:15px;margin-bottom:6px}
+  .beneficios ul{margin:0;padding-left:18px}
+  .beneficios li{margin:3px 0}
+
+  .res-titulo{font:800 clamp(30px,7vw,42px)/1 "Bricolage Grotesque",sans-serif;text-align:center;margin:0 0 6px}
+  .res-bajada{text-align:center;color:var(--tinta-2);margin:0 0 6px}
+  .resumen{background:var(--papel);border:2px solid var(--tinta);border-radius:var(--radio);padding:18px 20px;margin-bottom:20px}
+  .resumen h3{font-family:"Bricolage Grotesque",sans-serif;margin:0 0 10px;font-size:18px}
+  .resumen dl{margin:0;display:grid;gap:8px}
+  .resumen dt{font-size:12.5px;color:var(--tinta-2);text-transform:uppercase;letter-spacing:.06em}
+  .resumen dd{margin:0 0 4px;font-weight:500}
+  .acciones{display:grid;gap:12px}
+  .btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;cursor:pointer;
+    font:800 18px/1 "Bricolage Grotesque",sans-serif;border:2px solid var(--tinta);border-radius:16px;
+    padding:18px;box-shadow:var(--sombra);transition:transform .12s;
+  }
+  .btn:active{transform:translate(2px,2px)}
+  .btn.wa{background:#25D366;color:#0B2B17}
+  .btn.copiar{background:#fff;color:var(--tinta)}
+  .btn.otra{background:transparent;box-shadow:none;border-style:dashed;font-size:15px}
+
+  .pie{text-align:center;font-size:12.5px;color:var(--tinta-2);margin-top:40px}
+
+  /* Lluvia de corazones */
+  .lluvia{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
+  .lluvia i{position:absolute;top:-40px;font-style:normal;animation:caer linear forwards}
+  @keyframes caer{to{transform:translateY(110vh) rotate(260deg)}}
+
+  @media (max-width:420px){
+    .wrap{padding:20px 14px 70px}
+    .preg{padding:20px 16px}
+    .preg h2{font-size:20px}
+    .op span{font-size:15px;padding:9px 14px}
+    .cred-cuerpo{grid-template-columns:78px 1fr;gap:14px}
+    .foto{width:78px;height:96px;font-size:38px}
+    .sello{font-size:19px;right:14px;bottom:16px}
+    .cred-top{flex-direction:column;align-items:flex-start;gap:4px}
+    .cred-top b{font-size:14px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="franja" aria-hidden="true"></div>
+
+  <header class="cabecera">
+    <div class="patente" aria-hidden="true">
+      <div class="banda"><span>ARGENTINA</span><span>★</span></div>
+      <div class="numero">GAUCH1T0</div>
+    </div>
+    <div><span class="cartel"><span class="punto"></span>Búsqueda activa · 1 vacante</span></div>
+    <h1>Formulario para contratar al <em>chofer más lindo</em></h1>
+    <p class="bajada">Se busca gauchita para el asiento de adelante. Música a elección (negociable). <b>Hay muchísimas postulantes</b> (mentira, sos vos sola, pero completalo igual).</p>
+  </header>
+
+  <div class="ruta" aria-live="polite">
+    <div class="ruta-txt"><span id="km">Km 0 de 10</span><span id="frase">Arrancando el motor…</span></div>
+    <div class="asfalto"><span class="auto" id="auto">🚗</span><span class="meta">💛</span></div>
+  </div>
+
+  <form id="form" novalidate>
+    <div id="preguntas"></div>
+    <button class="enviar" type="submit">Mandar postulación al gauchito 🚗💨</button>
+    <p class="letra-chica">Al enviar aceptás que el gauchito elige la ruta, que los mates se comparten y que las respuestas "incorrectas" se corrigen con besos.</p>
+  </form>
+
+  <section class="resultado" id="resultado" aria-live="polite">
+    <p class="res-titulo">¡Quedaste, gauchita! 🎉</p>
+    <p class="res-bajada">El gauchito revisó tu postulación (la leyó tres veces) y no hubo nada que pensar.</p>
+
+    <div class="credencial">
+      <div class="cred-top"><b>Credencial de gauchita copiloto</b><span>N° 0001 · y única</span></div>
+      <div class="cred-cuerpo">
+        <div class="foto" aria-hidden="true">😍</div>
+        <div>
+          <p class="cred-nombre" id="cNombre">—</p>
+          <p class="cred-dato">Puesto: <b id="cPuesto">—</b></p>
+          <p class="cred-dato">Válida hasta: <b>para siempre</b></p>
+          <p class="cred-dato">Calificación del gauchito:</p>
+          <div class="estrellas" aria-label="11 de 10 estrellas">⭐⭐⭐⭐⭐ <b>11/10</b></div>
+        </div>
+      </div>
+      <div class="beneficios">
+        <b>Beneficios del puesto</b>
+        <ul>
+          <li>Asiento delantero de por vida.</li>
+          <li>Besos ilimitados en semáforos, PARE y estacionamientos.</li>
+          <li>Control del aux (el gauchito igual va a opinar).</li>
+          <li>Mates cebados por el gauchito los domingos.</li>
+          <li>Paradas a comprar facturas sin justificar.</li>
+        </ul>
+      </div>
+      <div class="sello">APROBADO</div>
+    </div>
+
+    <div class="resumen">
+      <h3>Lo que respondiste</h3>
+      <dl id="resumen"></dl>
+    </div>
+
+    <div class="acciones">
+      <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">Mandarle la postulación al gauchito 💬</a>
+      <button class="btn copiar" id="copiar" type="button">Copiar respuestas</button>
+      <button class="btn otra" id="otra" type="button">Volver a postularme (por las dudas)</button>
+    </div>
+  </section>
+
+  <p class="pie">Gauchito Lindo S.R.L. · Viajes con cariño desde siempre · No trabajamos con aplicaciones, solo con mimos.</p>
+</div>
+
+<div class="velo" id="velo" role="dialog" aria-modal="true" aria-label="Analizando postulación">
+  <div class="caja">
+    <h3>Analizando tu postulación…</h3>
+    <ul class="pasos" id="pasos"></ul>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  // Número del gauchito, con código de país y sin "+": ej. 5493511234567
+  var TELEFONO = "5493513507537";
+
+  var PREGUNTAS = [
+    {id:"nombre", tipo:"texto", titulo:"¿Cómo te llamás?", ayuda:"Va en la credencial. Se aceptan apodos cariñosos.", ph:"Nombre o apodo"},
+    {id:"gauchita", tipo:"radio", titulo:"¿Sos una verdadera gauchita?", ayuda:"Requisito excluyente para viajar con el gauchito.", ops:["Gauchita certificada 🤠","Gauchita de ciudad, pero con el mate listo","Gauchita y media","Soy LA gauchita, no hay otra"]},
+    {id:"puesto", tipo:"radio", titulo:"¿A qué puesto te postulás?", ayuda:"Elegí con el corazón.", ops:["Copiloto oficial","Cebadora titular de mates","DJ del asiento de adelante","Todos, vengo en combo"]},
+    {id:"compania", tipo:"radio", titulo:"¿Sos buena compañía en un viaje?", ayuda:"Sé sincera, el gauchito ya sabe la respuesta.", ops:["Charlo todo el camino","Me duermo a los 10 minutos, pero divina","Señalo cada perro que veo","Canto todo (mal, pero con ganas)"]},
+    {id:"mate", tipo:"mate", titulo:"¿Cómo cebás los mates?", ayuda:"Mové la bombilla. Sin mentir, que se nota en el primer sorbo."},
+    {id:"musica", tipo:"radio", titulo:"¿Qué ponés de música en el auto?", ayuda:"Hay una respuesta correcta. Solo digo.", ops:["Cumbia para arrancar con todo","Rock nacional a los gritos","Pop triste para mirar por la ventana","Lo que el gauchito quiera ✅"]},
+    {id:"besos", tipo:"besos", titulo:"¿Le das besos al chofer en los semáforos?", ayuda:"Pregunta clave del proceso de selección.", ops:["Sí, en todos los rojos","Sí, y en los PARE también","En el amarillo, por las dudas"]},
+    {id:"perdido", tipo:"radio", titulo:"El gauchito se pierde. ¿Qué hacés?", ayuda:"Pasa poco. Casi nunca. Bueno, a veces.", ops:["Abro el mapa sin decir nada, con amor","Le digo «yo te dije» (y no le dije nada)","Disfruto el paseo, total vamos juntos","Le doy un beso para que se concentre"]},
+    {id:"snacks", tipo:"check", titulo:"¿Qué traés para el viaje?", ayuda:"Elegí todo lo que quieras. Cuanto más, mejor puntaje.", ops:["Bizcochitos","Alfajores","Facturas","Mandarinas peladas","Le doy de comer en la boca al gauchito"]},
+    {id:"pago", tipo:"radio", titulo:"¿Cómo pagás el viaje?", ayuda:"Tarifa fija: un viaje, una sonrisa.", ops:["Efectivo","Transferencia","En besos","Abrazos en cuotas sin interés"]},
+    {id:"disponibilidad", tipo:"radio", titulo:"Disponibilidad horaria", ayuda:"El chofer tiene el tanque lleno.", ops:["Fines de semana","Cuando haya mates","Las 24 horas","Toda la vida 🙈"]},
+    {id:"porque", tipo:"area", titulo:"¿Por qué deberíamos contratarte?", ayuda:"Opcional, pero el gauchito lo va a leer varias veces.", ph:"Contá tus virtudes, tus mejores mates, lo que quieras…", opcional:true}
+  ];
+
+  var MATE = [
+    [0,"Lavado como agua de florero 😬"],
+    [2,"Tibio y medio lavado"],
+    [4,"Zafa, se toma"],
+    [6,"Rico, de verdad"],
+    [8,"Con espumita perfecta ✨"],
+    [10,"Nivel abuela: no se discute 👵"]
+  ];
+
+  var FRASES = ["Arrancando el motor…","Saliendo del garage","Primer semáforo 😘","Cargando nafta","A mitad de camino","Paramos por facturas","Ya se ve la ruta","Casi llegamos","Último peaje","Llegando…","¡Destino: contratación!"];
+
+  var NO_TEXTOS = ["No","¿En serio?","Pensalo bien","No se puede","Ni lo intentes","Imposible"];
+
+  var cont = document.getElementById("preguntas");
+  var respuestas = {};
+  var requeridas = PREGUNTAS.filter(function(p){return !p.opcional;});
+
+  function el(tag, attrs, html){
+    var e = document.createElement(tag);
+    if (attrs) for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+
+  function pill(nombre, valor, tipo){
+    var l = el("label",{"class":"op"});
+    var i = el("input",{type:tipo, name:nombre, value:valor});
+    var s = el("span"); s.textContent = valor;
+    l.appendChild(i); l.appendChild(s);
+    return l;
+  }
+
+  PREGUNTAS.forEach(function(p, idx){
+    var c = el("fieldset",{"class":"preg", id:"q-"+p.id});
+    c.appendChild(el("span",{"class":"num"}, String(idx+1).padStart(2,"0")));
+    var h = el("h2"); h.textContent = p.titulo; c.appendChild(h);
+    var a = el("p",{"class":"ayuda"}); a.textContent = p.ayuda; c.appendChild(a);
+
+    if (p.tipo === "texto"){
+      var t = el("input",{type:"text", name:p.id, placeholder:p.ph, autocomplete:"given-name", maxlength:"40"});
+      t.addEventListener("input", function(){ marcar(p.id, t.value.trim()); });
+      c.appendChild(t);
+    }
+    else if (p.tipo === "area"){
+      var ta = el("textarea",{name:p.id, placeholder:p.ph, maxlength:"600"});
+      ta.addEventListener("input", function(){ respuestas[p.id] = ta.value.trim(); });
+      c.appendChild(ta);
+    }
+    else if (p.tipo === "radio" || p.tipo === "besos"){
+      var o = el("div",{"class":"opciones", role:"radiogroup"});
+      p.ops.forEach(function(v){ o.appendChild(pill(p.id, v, "radio")); });
+      o.addEventListener("change", function(e){ marcar(p.id, e.target.value); });
+      c.appendChild(o);
+      if (p.tipo === "besos") armarNo(c, o, p.id);
+    }
+    else if (p.tipo === "check"){
+      var oc = el("div",{"class":"opciones"});
+      p.ops.forEach(function(v){ oc.appendChild(pill(p.id, v, "checkbox")); });
+      oc.addEventListener("change", function(){
+        var sel = [].slice.call(oc.querySelectorAll("input:checked")).map(function(x){return x.value;});
+        marcar(p.id, sel.length ? sel.join(", ") : "");
+      });
+      c.appendChild(oc);
+    }
+    else if (p.tipo === "mate"){
+      var m = el("div",{"class":"mate"});
+      m.innerHTML = '<div class="taza" aria-hidden="true">🧉<span class="espuma">🫧🫧</span></div>' +
+        '<div><p class="veredicto" id="veredicto">Mové la bombilla 👇</p>' +
+        '<input type="range" min="0" max="10" step="1" value="5" id="rango" aria-label="Calidad de tus mates, de 0 a 10">' +
+        '<div class="extremos"><span>Lavado</span><span>Nivel abuela</span></div></div>';
+      c.appendChild(m);
+      var sub = el("p",{"class":"sub"},"¿Y cómo lo tomás?");
+      c.appendChild(sub);
+      var od = el("div",{"class":"opciones"});
+      ["Amargo","Dulce","Con cascarita de naranja","Con lo que haya"].forEach(function(v){ od.appendChild(pill("mate-estilo", v, "radio")); });
+      c.appendChild(od);
+
+      var rango = m.querySelector("#rango"), ver = m.querySelector("#veredicto"),
+          taza = m.querySelector(".taza"), esp = m.querySelector(".espuma");
+      var estilo = "";
+      function actualizarMate(){
+        var v = +rango.value, txt = MATE[0][1];
+        MATE.forEach(function(x){ if (v >= x[0]) txt = x[1]; });
+        ver.textContent = v + "/10 · " + txt;
+        taza.style.transform = "scale(" + (0.85 + v*0.03) + ") rotate(" + (v-5)*2 + "deg)";
+        esp.style.opacity = v >= 8 ? 1 : 0;
+        marcar("mate", v + "/10, " + txt.replace(/\s*\p{Extended_Pictographic}.*$/u, "").toLowerCase() + (estilo ? " · " + estilo : ""));
+      }
+      rango.addEventListener("input", actualizarMate);
+      od.addEventListener("change", function(e){ estilo = e.target.value; actualizarMate(); });
+    }
+
+    c.appendChild(el("p",{"class":"falta"},"👀 El gauchito necesita saber esto."));
+    cont.appendChild(c);
+  });
+
+  /* ---------- El "No" que se escapa ---------- */
+  function armarNo(card, grupo, id){
+    var patio = el("div",{"class":"patio"});
+    var no = el("button",{type:"button","class":"no"}); no.textContent = "No";
+    patio.appendChild(no);
+    patio.appendChild(el("small",{},"Opción «No» disponible (si la alcanzás)"));
+    card.appendChild(patio);
+    var intentos = 0, rendido = false;
+
+    function escapar(e){
+      if (rendido) return;
+      if (e && e.cancelable) e.preventDefault();
+      intentos++;
+      if (intentos >= NO_TEXTOS.length + 1){
+        rendido = true;
+        no.textContent = "Bueno, sí 😳";
+        no.classList.add("si");
+        no.style.left = "14px"; no.style.top = "14px";
+        return;
+      }
+      no.textContent = NO_TEXTOS[Math.min(intentos, NO_TEXTOS.length-1)];
+      var maxX = Math.max(0, patio.clientWidth - no.offsetWidth - 10);
+      var maxY = Math.max(0, patio.clientHeight - no.offsetHeight - 26);
+      var x, y, prevX = no.offsetLeft, intentosPos = 0;
+      do {
+        x = 8 + Math.random()*maxX; y = 6 + Math.random()*maxY; intentosPos++;
+      } while (Math.abs(x - prevX) < maxX*0.3 && intentosPos < 10);
+      no.style.left = x + "px"; no.style.top = y + "px";
+      no.style.transform = "rotate(" + (Math.random()*16-8) + "deg)";
+    }
+    no.addEventListener("pointerenter", function(e){ if (e.pointerType === "mouse") escapar(e); });
+    no.addEventListener("pointerdown", escapar);
+    no.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " ") escapar(e); });
+    no.addEventListener("click", function(e){
+      e.preventDefault();
+      if (!rendido) { escapar(); return; }
+      var r = grupo.querySelector("input");
+      r.checked = true;
+      marcar(id, "Sí (intentó decir que no y no pudo 😳)");
+      no.textContent = "¡Sabía! 💋";
+    });
+  }
+
+  /* ---------- Progreso ---------- */
+  function marcar(id, valor){
+    respuestas[id] = valor;
+    var card = document.getElementById("q-"+id);
+    if (card){
+      card.classList.toggle("hecha", !!valor);
+      if (valor) card.classList.remove("error");
+    }
+    progreso();
+  }
+
+  function progreso(){
+    var n = requeridas.filter(function(p){ return !!respuestas[p.id]; }).length;
+    var total = requeridas.length;
+    document.getElementById("km").textContent = "Km " + n + " de " + total;
+    document.getElementById("frase").textContent = FRASES[Math.round(n/total*(FRASES.length-1))];
+    var asfalto = document.querySelector(".asfalto"), auto = document.getElementById("auto");
+    var recorrido = asfalto.clientWidth - auto.offsetWidth - 30;
+    auto.style.left = Math.max(0, recorrido * n/total) + "px";
+  }
+  window.addEventListener("resize", progreso);
+  progreso();
+
+  /* ---------- Enviar ---------- */
+  var PASOS = [
+    "Midiendo la espumita del mate",
+    "Escuchando la playlist (sin saltear temas)",
+    "Contando besos en semáforos",
+    "Verificando que seas gauchita de verdad",
+    "Consultando con el gauchito…",
+    "El gauchito dijo que sí antes de terminar de leer"
+  ];
+
+  document.getElementById("form").addEventListener("submit", function(e){
+    e.preventDefault();
+    var faltan = requeridas.filter(function(p){ return !respuestas[p.id]; });
+    if (faltan.length){
+      faltan.forEach(function(p){
+        var c = document.getElementById("q-"+p.id);
+        c.classList.remove("error"); void c.offsetWidth; c.classList.add("error");
+      });
+      document.getElementById("q-"+faltan[0].id).scrollIntoView({behavior:"smooth", block:"center"});
+      return;
+    }
+    analizar();
+  });
+
+  function analizar(){
+    var velo = document.getElementById("velo"), lista = document.getElementById("pasos");
+    lista.innerHTML = "";
+    PASOS.forEach(function(t){
+      var li = el("li"); li.innerHTML = '<span class="ic">•</span><span></span>';
+      li.lastChild.textContent = t; lista.appendChild(li);
+    });
+    velo.classList.add("ver");
+    var items = lista.children, i = 0;
+    (function paso(){
+      if (i > 0){ items[i-1].classList.add("ok"); items[i-1].firstChild.textContent = "✓"; }
+      if (i < items.length){ items[i].classList.add("va"); items[i].firstChild.textContent = "⏳"; i++; setTimeout(paso, 650); }
+      else setTimeout(function(){ velo.classList.remove("ver"); mostrarResultado(); }, 500);
+    })();
+  }
+
+  function textoResumen(){
+    var lineas = ["Hola gauchito 🤠 acá va mi postulación para ser tu copiloto:", ""];
+    PREGUNTAS.forEach(function(p){
+      var v = respuestas[p.id];
+      if (!v) return;
+      lineas.push("• " + p.titulo);
+      lineas.push("  → " + v);
+    });
+    lineas.push("", "Resultado: APROBADA ✅ · Gauchita copiloto N° 0001");
+    return lineas.join("\n");
+  }
+
+  function mostrarResultado(){
+    document.getElementById("form").style.display = "none";
+    document.querySelector(".ruta").style.display = "none";
+    var r = document.getElementById("resultado");
+    document.getElementById("cNombre").textContent = respuestas.nombre;
+    document.getElementById("cPuesto").textContent = respuestas.puesto;
+    var dl = document.getElementById("resumen"); dl.innerHTML = "";
+    PREGUNTAS.forEach(function(p){
+      if (p.id === "nombre" || !respuestas[p.id]) return;
+      var dt = el("dt"); dt.textContent = p.titulo;
+      var dd = el("dd"); dd.textContent = respuestas[p.id];
+      dl.appendChild(dt); dl.appendChild(dd);
+    });
+    document.getElementById("wa").href = "https://wa.me/" + TELEFONO + "?text=" + encodeURIComponent(textoResumen());
+    r.classList.add("ver");
+    window.scrollTo({top: r.offsetTop - 28, behavior:"smooth"});
+    lluvia();
+  }
+
+  document.getElementById("copiar").addEventListener("click", function(){
+    var b = this, txt = textoResumen();
+    function listo(){ b.textContent = "¡Copiado! Pegáselo al gauchito 💛"; }
+    try {
+      navigator.clipboard.writeText(txt).then(listo, respaldo);
+    } catch(err){ respaldo(); }
+    function respaldo(){
+      var ta = el("textarea"); ta.value = txt; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); listo(); } catch(e2){ b.textContent = "No pude copiar, mandalo por WhatsApp"; }
+      ta.remove();
+    }
+  });
+
+  document.getElementById("otra").addEventListener("click", function(){
+    document.getElementById("resultado").classList.remove("ver");
+    document.getElementById("form").style.display = "";
+    document.querySelector(".ruta").style.display = "";
+    window.scrollTo({top:0, behavior:"smooth"});
+    progreso();
+  });
+
+  function lluvia(){
+    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var capa = el("div",{"class":"lluvia","aria-hidden":"true"});
+    var cosas = ["💛","❤️","💋","🚗","🧉","✨","😘"];
+    for (var k = 0; k < 42; k++){
+      var i = el("i"); i.textContent = cosas[k % cosas.length];
+      i.style.left = (Math.random()*100) + "vw";
+      i.style.fontSize = (16 + Math.random()*20) + "px";
+      i.style.animationDuration = (2.4 + Math.random()*2.4) + "s";
+      i.style.animationDelay = (Math.random()*1.2) + "s";
+      capa.appendChild(i);
+    }
+    document.body.appendChild(capa);
+    setTimeout(function(){ capa.remove(); }, 6500);
+  }
+})();
+</script>
+</body>
+</html>
