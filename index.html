@@ -315,9 +315,14 @@
       <dl id="resumen"></dl>
     </div></div>
 
+    <div class="bloque"><div class="resumen recorte-4">
+      <h3>Esto es lo que le llega</h3>
+      <p id="previa" style="white-space:pre-line;margin:0;font-weight:600"></p>
+    </div></div>
+
     <div class="acciones">
-      <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">Mandarle la postulación al gauchito 💬</a>
-      <button class="btn copiar" id="copiar" type="button">Copiar respuestas</button>
+      <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">Mandar el aviso por WhatsApp 💬</a>
+      <button class="btn copiar" id="copiar" type="button">Copiar el mensaje</button>
       <button class="btn otra" id="otra" type="button">Volver a postularme (por las dudas)</button>
     </div>
   </section>
@@ -557,16 +562,21 @@
     })();
   }
 
+  /* Mensaje corto que llega por WhatsApp: uno al azar, sin las respuestas */
+  var MENSAJES = [
+    "🚗 Mirá: cumplo con el 100% de los requisitos para que seas mi chofer.\nYa tengo la credencial N° 0001, así que es oficial: tengo chofer propio.\nPasame a buscar cuando quieras 😎",
+    "🏆 ¡GANÉ UN CHOFER!\nPasé el proceso de selección con 11/10 y me asignaron al más lindo.\nPrimer viaje: cuando vos digas. Yo llevo el mate 🧉",
+    "📋 Postulación APROBADA ✅\nRequisitos cumplidos: 100%.\nPremio: un chofer de por vida, sin devolución ni cambio.\nEncendé el motor que salimos 🚗💨",
+    "🎟️ Me salió el premio mayor: chofer exclusivo, asiento de adelante y música a elección (negociable).\nYa firmé. No hay vuelta atrás.\n¿A qué hora pasás? 🚗",
+    "🚦 Comunicado oficial: a partir de hoy sos mi chofer.\nAprobé todos los requisitos (los de los semáforos también 😏).\nTe espero en la puerta 🚗"
+  ];
+  var mensajeActual = "";
   function textoResumen(){
-    var lineas = ["Hola gauchito 🤠 acá va mi postulación para ser tu copiloto:", ""];
-    PREGUNTAS.forEach(function(p){
-      var v = respuestas[p.id];
-      if (!v) return;
-      lineas.push("• " + p.titulo);
-      lineas.push("  → " + v);
-    });
-    lineas.push("", "Resultado: APROBADA ✅ · Gauchita copiloto N° 0001");
-    return lineas.join("\n");
+    if (!mensajeActual){
+      mensajeActual = MENSAJES[Math.floor(Math.random() * MENSAJES.length)];
+      if (respuestas.nombre) mensajeActual += "\n\n— " + respuestas.nombre + ", copiloto oficial";
+    }
+    return mensajeActual;
   }
 
   function mostrarResultado(){
@@ -582,6 +592,8 @@
       var dd = el("dd"); dd.textContent = respuestas[p.id];
       dl.appendChild(dt); dl.appendChild(dd);
     });
+    mensajeActual = "";
+    document.getElementById("previa").textContent = textoResumen();
     document.getElementById("wa").href = "https://wa.me/" + TELEFONO + "?text=" + encodeURIComponent(textoResumen());
     r.classList.add("ver");
     window.scrollTo({top: r.offsetTop - 28, behavior:"smooth"});
