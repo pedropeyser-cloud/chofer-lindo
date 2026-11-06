@@ -12,251 +12,245 @@
 <meta property="og:image" content="https://pedropeyser-cloud.github.io/chofer-lindo/vista.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta name="theme-color" content="#FFF4E2">
+<meta name="theme-color" content="#4F9A2E">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Oswald:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --crema:#FFF4E2;
-    --papel:#FFFDF8;
-    --tinta:#231A35;
-    --tinta-2:#5B5170;
-    --amarillo:#FFC83D;
-    --coral:#FF5A6E;
-    --coral-2:#FFE1E5;
-    --azul:#1D3E92;
-    --verde:#2F9E6B;
-    --sombra:4px 4px 0 var(--tinta);
-    --radio:18px;
+    --verde:#4F9A2E;
+    --verde-osc:#2F6B1A;
+    --amarillo:#F3CF2B;
+    --tinta:#141414;
+    --carton:#CDB88E;
+    --papel:#F4EEDD;
+    --gris:#3A3528;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{
-    margin:0;
-    font-family:"DM Sans",system-ui,sans-serif;
-    color:var(--tinta);
-    background:
-      radial-gradient(circle at 12% 8%, #FFE3A8 0, transparent 38%),
-      radial-gradient(circle at 92% 30%, #FFD3DA 0, transparent 34%),
-      var(--crema);
-    min-height:100vh;
-    line-height:1.45;
+    margin:0;font-family:"Archivo",system-ui,sans-serif;color:var(--tinta);line-height:1.45;min-height:100vh;
+    background-color:var(--carton);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .25 0 0 0 0 .2 0 0 0 0 .1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      repeating-linear-gradient(90deg,rgba(0,0,0,.035) 0 2px,transparent 2px 9px);
   }
-  .wrap{max-width:660px;margin:0 auto;padding:28px 18px 80px}
+  .wrap{max-width:660px;margin:0 auto;padding:26px 16px 80px}
+
+  /* ---------- Bloques recortados ---------- */
+  .bloque{filter:drop-shadow(5px 6px 0 var(--tinta));margin-bottom:26px}
+  .recorte-1{clip-path:polygon(0 3%,12% 0,58% 2%,100% 0,98% 40%,100% 97%,64% 100%,22% 97%,0 100%,2% 52%)}
+  .recorte-2{clip-path:polygon(2% 0,47% 3%,96% 0,100% 28%,97% 100%,51% 97%,0 100%,0 61%,3% 22%)}
+  .recorte-3{clip-path:polygon(0 0,33% 2%,100% 4%,98% 63%,100% 100%,8% 98%,0 72%)}
+  .recorte-4{clip-path:polygon(4% 2%,70% 0,100% 6%,100% 90%,85% 100%,0 96%,1% 30%)}
 
   /* ---------- Encabezado ---------- */
-  .franja{
-    height:14px;border-radius:8px;margin-bottom:22px;
-    background:repeating-linear-gradient(90deg,var(--tinta) 0 14px,var(--amarillo) 14px 28px);
-    border:2px solid var(--tinta);
+  .cabecera{
+    position:relative;padding:34px 26px 34px;
+    background:linear-gradient(104deg,var(--verde) 0 54%,var(--amarillo) 54% 100%);
+    clip-path:polygon(0 6%,18% 0,63% 4%,100% 0,97% 38%,100% 88%,78% 100%,40% 95%,0 100%,3% 50%);
   }
-  .cabecera{text-align:center;margin-bottom:26px}
-  .patente{
-    display:inline-block;background:#fff;border:3px solid var(--tinta);border-radius:10px;
-    box-shadow:var(--sombra);overflow:hidden;transform:rotate(-2deg);margin-bottom:22px;
+  .etiqueta{
+    display:inline-block;background:var(--tinta);color:var(--amarillo);
+    font:400 clamp(26px,7vw,38px)/1 "Archivo Black",sans-serif;letter-spacing:.06em;
+    padding:10px 18px 12px;transform:rotate(-3deg);margin-bottom:18px;
+    clip-path:polygon(0 8%,96% 0,100% 90%,4% 100%);
   }
-  .patente .banda{
-    background:var(--azul);color:#fff;font:700 10px/1 "DM Sans",sans-serif;letter-spacing:.32em;
-    padding:5px 12px;display:flex;justify-content:space-between;gap:16px;
-  }
-  .patente .numero{font:600 clamp(30px,8vw,44px)/1 "Oswald",sans-serif;letter-spacing:.08em;padding:8px 22px 10px}
   .cartel{
-    display:inline-flex;align-items:center;gap:8px;background:var(--tinta);color:var(--amarillo);
-    font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
-    padding:6px 12px;border-radius:999px;margin-bottom:14px;
+    display:inline-block;background:var(--papel);color:var(--tinta);font-weight:800;font-size:12.5px;
+    letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;margin:0 0 14px 6px;vertical-align:middle;
+    transform:rotate(2deg);
   }
-  .cartel .punto{width:8px;height:8px;border-radius:50%;background:var(--coral);animation:late 1.4s infinite}
-  @keyframes late{50%{opacity:.25}}
+  .cartel .punto{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--verde-osc);margin-right:7px;animation:late 1.4s infinite}
+  @keyframes late{50%{opacity:.2}}
   h1{
-    font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
-    font-size:clamp(34px,8.6vw,56px);line-height:.98;letter-spacing:-.02em;margin:0 0 14px;
+    font:400 clamp(36px,9.4vw,62px)/.94 "Archivo Black",sans-serif;text-transform:uppercase;
+    letter-spacing:-.01em;margin:0 0 16px;
   }
-  h1 em{font-style:normal;color:var(--coral);position:relative;white-space:nowrap}
-  h1 em::after{
-    content:"";position:absolute;left:-2%;right:-2%;bottom:.02em;height:.22em;z-index:-1;
-    background:var(--amarillo);border-radius:4px;transform:rotate(-1deg);
+  h1 em{
+    font-style:normal;display:inline-block;background:var(--tinta);color:var(--amarillo);
+    padding:.06em .18em .1em;margin-top:.08em;transform:rotate(-1.5deg);
+    clip-path:polygon(0 4%,100% 0,98% 100%,2% 94%);
   }
-  .bajada{font-size:17px;color:var(--tinta-2);max-width:480px;margin:0 auto}
-  .bajada b{color:var(--tinta)}
+  .bajada{font-size:16.5px;font-weight:500;max-width:470px;margin:0;color:var(--tinta)}
 
   /* ---------- Ruta de progreso ---------- */
   .ruta{
-    position:sticky;top:10px;z-index:20;background:var(--papel);border:2px solid var(--tinta);
-    border-radius:14px;box-shadow:var(--sombra);padding:10px 14px 12px;margin:0 0 26px;
+    position:sticky;top:10px;z-index:20;background:var(--tinta);color:var(--papel);
+    padding:10px 16px 13px;margin:26px 0 30px;
+    clip-path:polygon(0 0,100% 6%,99% 100%,1% 92%);
   }
-  .ruta-txt{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:8px}
-  .ruta-txt span:last-child{color:var(--tinta-2);font-weight:500}
-  .asfalto{position:relative;height:26px;background:#3A3346;border-radius:8px;overflow:visible}
+  .ruta-txt{display:flex;justify-content:space-between;gap:10px;font-size:13px;font-weight:800;margin-bottom:8px;text-transform:uppercase;letter-spacing:.06em}
+  .ruta-txt span:first-child{color:var(--amarillo)}
+  .ruta-txt span:last-child{font-weight:500;text-transform:none;letter-spacing:0;opacity:.85}
+  .asfalto{position:relative;height:24px;background:#2A2A2A}
   .asfalto::before{
     content:"";position:absolute;left:10px;right:34px;top:50%;height:3px;transform:translateY(-50%);
-    background:repeating-linear-gradient(90deg,#FFE9A8 0 12px,transparent 12px 24px);
+    background:repeating-linear-gradient(90deg,var(--amarillo) 0 12px,transparent 12px 24px);
   }
-  .meta{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:18px}
-  .auto{
-    position:absolute;top:50%;left:0;font-size:24px;transform:translate(0,-58%) scaleX(-1);
-    transition:left .6s cubic-bezier(.3,1.4,.5,1);
-  }
+  .meta{position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:17px}
+  .auto{position:absolute;top:50%;left:0;font-size:23px;transform:translate(0,-58%) scaleX(-1);transition:left .6s cubic-bezier(.3,1.4,.5,1)}
 
   /* ---------- Preguntas ---------- */
   .preg{
-    background:var(--papel);border:2px solid var(--tinta);border-radius:var(--radio);
-    box-shadow:var(--sombra);padding:22px 20px 22px;margin-bottom:22px;position:relative;
-    transition:transform .2s;min-width:0;
+    margin:0;border:0;min-width:0;position:relative;
+    background:var(--amarillo);padding:30px 26px 30px;
   }
-  .preg.hecha{border-color:var(--tinta)}
-  .preg.hecha .num{background:var(--verde);color:#fff}
+  .bloque:nth-child(even) .preg{background:var(--verde)}
+  .bloque:nth-child(4n+1) .preg{background:linear-gradient(100deg,var(--amarillo) 0 82%,var(--verde) 82%)}
+  .bloque:nth-child(4n+3) .preg{background:linear-gradient(100deg,var(--amarillo) 0 88%,var(--verde) 88%)}
   .num{
-    position:absolute;top:-14px;left:18px;background:var(--amarillo);border:2px solid var(--tinta);
-    font:800 13px/1 "Bricolage Grotesque",sans-serif;padding:6px 10px;border-radius:999px;
-    transition:background .3s,color .3s;
+    display:inline-block;background:var(--tinta);color:var(--papel);
+    font:400 13px/1 "Archivo Black",sans-serif;letter-spacing:.08em;padding:7px 10px 6px;
+    transform:rotate(-2deg);transition:background .3s,color .3s;
   }
-  .preg h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:22px;line-height:1.15;margin:6px 0 4px}
-  .ayuda{font-size:14.5px;color:var(--tinta-2);margin:0 0 14px}
-  .falta{display:none;color:var(--coral);font-weight:700;font-size:14px;margin-top:12px}
+  .preg.hecha .num{background:var(--papel);color:var(--tinta)}
+  .preg.hecha .num::after{content:" ✓"}
+  .preg h2{font:400 22px/1.12 "Archivo Black",sans-serif;margin:12px 0 6px;max-width:92%}
+  .ayuda{font-size:14.5px;font-weight:500;margin:0 0 14px;opacity:.85}
+  .falta{display:none;background:var(--tinta);color:var(--amarillo);font-weight:800;font-size:14px;margin:14px 0 0;padding:6px 10px;width:fit-content}
   .preg.error .falta{display:block}
-  .preg.error{animation:sacudir .45s}
+  .bloque:has(.preg.error){animation:sacudir .45s}
   @keyframes sacudir{20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
 
-  .opciones{display:flex;flex-wrap:wrap;gap:10px}
+  .opciones{display:flex;flex-wrap:wrap;gap:9px}
   .op{position:relative}
   .op input{position:absolute;opacity:0;pointer-events:none}
   .op span{
     display:inline-flex;align-items:center;gap:8px;cursor:pointer;user-select:none;
-    background:#fff;border:2px solid var(--tinta);border-radius:999px;
-    padding:10px 16px;font-size:15.5px;font-weight:500;min-height:44px;
-    transition:background .15s,color .15s,transform .12s,box-shadow .15s;
+    background:var(--papel);border:2px solid var(--tinta);border-radius:3px;
+    padding:10px 15px;font-size:15.5px;font-weight:600;min-height:44px;
+    transition:background .15s,color .15s,transform .12s;
   }
-  .op span:hover{background:var(--coral-2)}
+  .op:nth-child(odd) span{transform:rotate(-.6deg)}
+  .op:nth-child(even) span{transform:rotate(.5deg)}
+  .op span:hover{background:#fff}
   .op span:active{transform:scale(.97)}
-  .op input:focus-visible + span{outline:3px solid var(--azul);outline-offset:2px}
-  .op input:checked + span{background:var(--coral);color:#fff;box-shadow:2px 2px 0 var(--tinta)}
-  .op input[type=checkbox] + span::before{content:"";width:16px;height:16px;border:2px solid currentColor;border-radius:5px;flex:none}
-  .op input[type=checkbox]:checked + span::before{content:"✓";display:grid;place-items:center;font-size:12px;font-weight:800;background:#fff;color:var(--coral);border-color:#fff}
+  .op input:focus-visible + span{outline:3px solid var(--tinta);outline-offset:3px}
+  .op input:checked + span{background:var(--tinta);color:var(--amarillo)}
+  .op input[type=checkbox] + span::before{content:"";width:16px;height:16px;border:2px solid currentColor;flex:none}
+  .op input[type=checkbox]:checked + span::before{content:"✓";display:grid;place-items:center;font-size:12px;font-weight:900;background:var(--amarillo);color:var(--tinta);border-color:var(--amarillo)}
 
   input[type=text],textarea{
-    width:100%;font:inherit;font-size:17px;color:var(--tinta);background:#fff;
-    border:2px solid var(--tinta);border-radius:12px;padding:12px 14px;
+    width:100%;font:inherit;font-size:17px;font-weight:500;color:var(--tinta);background:var(--papel);
+    border:2px solid var(--tinta);border-radius:2px;padding:12px 14px;
   }
   textarea{min-height:110px;resize:vertical}
-  input[type=text]:focus,textarea:focus{outline:3px solid var(--amarillo);outline-offset:1px}
+  input[type=text]:focus,textarea:focus{outline:3px solid var(--tinta);outline-offset:2px}
 
   /* Mate */
   .mate{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center}
   .taza{font-size:58px;line-height:1;position:relative;transition:transform .3s}
   .espuma{position:absolute;left:50%;top:-6px;transform:translateX(-50%);font-size:16px;letter-spacing:-2px;opacity:0;transition:opacity .3s}
-  .veredicto{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:18px;margin:0 0 6px;min-height:1.3em}
-  input[type=range]{width:100%;accent-color:var(--coral);height:30px}
-  .extremos{display:flex;justify-content:space-between;font-size:12.5px;color:var(--tinta-2)}
-  .sub{margin-top:14px;font-size:14px;font-weight:700;margin-bottom:8px}
+  .veredicto{font:400 17px/1.2 "Archivo Black",sans-serif;margin:0 0 6px;min-height:1.3em}
+  input[type=range]{width:100%;accent-color:var(--tinta);height:30px}
+  .extremos{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700}
+  .sub{margin:16px 0 8px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
 
   /* Besos: el No que se escapa */
   .patio{
-    position:relative;height:110px;margin-top:14px;border:2px dashed #CFC6DA;border-radius:14px;
-    background:repeating-linear-gradient(45deg,transparent 0 10px,#FBF5EE 10px 20px);
+    position:relative;height:110px;margin-top:14px;border:2px dashed var(--tinta);
+    background:repeating-linear-gradient(-45deg,transparent 0 9px,rgba(0,0,0,.07) 9px 18px);
   }
-  .patio small{position:absolute;left:12px;bottom:8px;font-size:12px;color:var(--tinta-2)}
+  .patio small{position:absolute;left:12px;bottom:8px;font-size:12px;font-weight:600}
   .no{
-    position:absolute;left:14px;top:14px;font:inherit;font-weight:700;font-size:15px;
-    background:#fff;border:2px solid var(--tinta);border-radius:999px;padding:10px 18px;cursor:pointer;
+    position:absolute;left:14px;top:14px;font:inherit;font-weight:800;font-size:15px;color:var(--tinta);
+    background:var(--papel);border:2px solid var(--tinta);border-radius:3px;padding:10px 18px;cursor:pointer;
     transition:left .22s ease,top .22s ease,transform .22s;min-height:44px;
   }
-  .no.si{background:var(--amarillo)}
+  .no.si{background:var(--tinta);color:var(--amarillo)}
 
   /* Botón final */
   .enviar{
-    display:block;width:100%;font:800 20px/1 "Bricolage Grotesque",sans-serif;letter-spacing:.01em;
-    background:var(--tinta);color:var(--amarillo);border:2px solid var(--tinta);border-radius:16px;
-    padding:20px;cursor:pointer;box-shadow:5px 5px 0 var(--coral);transition:transform .12s,box-shadow .12s;
+    display:block;width:100%;font:400 20px/1.1 "Archivo Black",sans-serif;text-transform:uppercase;letter-spacing:.02em;
+    background:var(--tinta);color:var(--amarillo);border:0;padding:24px 20px;cursor:pointer;
+    clip-path:polygon(0 8%,97% 0,100% 86%,3% 100%);transition:transform .12s,background .15s;
   }
-  .enviar:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--coral)}
-  .enviar:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--coral)}
-  .letra-chica{text-align:center;font-size:12.5px;color:var(--tinta-2);margin:14px auto 0;max-width:460px}
+  .enviar:hover{background:var(--verde-osc)}
+  .enviar:active{transform:scale(.98)}
+  .letra-chica{text-align:center;font-size:12.5px;font-weight:600;margin:16px auto 0;max-width:460px;color:var(--gris)}
 
   /* ---------- Cargando ---------- */
-  .velo{
-    position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:20px;
-    background:rgba(35,26,53,.82);backdrop-filter:blur(4px);
-  }
+  .velo{position:fixed;inset:0;z-index:50;display:none;place-items:center;padding:20px;background:rgba(20,20,20,.86)}
   .velo.ver{display:grid}
   .caja{
-    background:var(--papel);border:2px solid var(--tinta);border-radius:20px;box-shadow:6px 6px 0 var(--amarillo);
-    width:min(420px,100%);padding:26px 22px;
+    background:var(--amarillo);width:min(420px,100%);padding:30px 26px;
+    clip-path:polygon(0 4%,92% 0,100% 12%,98% 100%,6% 96%,0 60%);
   }
-  .caja h3{font-family:"Bricolage Grotesque",sans-serif;margin:0 0 16px;font-size:22px}
+  .caja h3{font:400 21px/1.1 "Archivo Black",sans-serif;text-transform:uppercase;margin:0 0 16px}
   .pasos{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-  .pasos li{display:flex;gap:10px;align-items:flex-start;font-size:15px;opacity:.3;transition:opacity .3s}
+  .pasos li{display:flex;gap:10px;align-items:flex-start;font-size:15px;font-weight:600;opacity:.3;transition:opacity .3s}
   .pasos li.va{opacity:1}
   .pasos li .ic{width:22px;flex:none;text-align:center}
-  .pasos li.ok .ic{color:var(--verde);font-weight:800}
+  .pasos li.ok .ic{color:var(--verde-osc);font-weight:900}
 
   /* ---------- Resultado ---------- */
   .resultado{display:none}
   .resultado.ver{display:block;animation:subir .6s cubic-bezier(.2,1.3,.4,1)}
   @keyframes subir{from{opacity:0;transform:translateY(30px) scale(.97)}}
   .credencial{
-    position:relative;background:linear-gradient(135deg,#fff 0%,#FFF7E6 100%);
-    border:3px solid var(--tinta);border-radius:22px;box-shadow:6px 6px 0 var(--tinta);
-    overflow:hidden;margin:10px 0 26px;
+    position:relative;overflow:hidden;
+    background:linear-gradient(104deg,var(--verde) 0 46%,var(--amarillo) 46% 100%);
+    clip-path:polygon(0 3%,30% 0,100% 2%,98% 55%,100% 98%,60% 100%,2% 97%,0 45%);
   }
-  .cred-top{background:var(--azul);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-  .cred-top b{font:800 15px/1.1 "Bricolage Grotesque",sans-serif;letter-spacing:.06em;text-transform:uppercase}
-  .cred-top span{font-size:12px;opacity:.85}
-  .cred-cuerpo{padding:20px;display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center}
-  .foto{
-    width:96px;height:116px;border:2px solid var(--tinta);border-radius:12px;background:var(--coral-2);
-    display:grid;place-items:center;font-size:48px;
-  }
-  .cred-nombre{font:800 clamp(24px,6vw,32px)/1.05 "Bricolage Grotesque",sans-serif;margin:0 0 6px;word-break:break-word}
-  .cred-dato{font-size:14px;margin:2px 0;color:var(--tinta-2)}
-  .cred-dato b{color:var(--tinta)}
+  .cred-top{background:var(--tinta);color:var(--amarillo);padding:18px 22px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .cred-top b{font:400 15px/1.1 "Archivo Black",sans-serif;letter-spacing:.06em;text-transform:uppercase}
+  .cred-top span{font-size:12px;font-weight:700;color:var(--papel)}
+  .cred-cuerpo{padding:22px;display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center}
+  .foto{width:96px;height:116px;border:3px solid var(--tinta);background:var(--papel);display:grid;place-items:center;font-size:48px;transform:rotate(-3deg)}
+  .cred-nombre{font:400 clamp(24px,6.4vw,34px)/1.02 "Archivo Black",sans-serif;text-transform:uppercase;margin:0 0 8px;word-break:break-word}
+  .cred-dato{font-size:14px;font-weight:600;margin:2px 0}
+  .cred-dato b{font-weight:900}
   .estrellas{font-size:18px;letter-spacing:2px;margin-top:6px}
   .sello{
-    position:absolute;right:14px;bottom:18px;transform:rotate(-14deg);
-    border:4px solid var(--coral);color:var(--coral);border-radius:10px;padding:6px 12px;
-    font:800 22px/1 "Bricolage Grotesque",sans-serif;letter-spacing:.08em;opacity:0;
-    animation:sellar .5s .5s forwards cubic-bezier(.2,1.6,.4,1);background:rgba(255,255,255,.7);
+    position:absolute;right:16px;bottom:22px;transform:rotate(-12deg);
+    background:var(--tinta);color:var(--amarillo);padding:8px 14px 9px;
+    font:400 22px/1 "Archivo Black",sans-serif;letter-spacing:.08em;opacity:0;
+    clip-path:polygon(0 10%,100% 0,96% 100%,4% 92%);
+    animation:sellar .5s .5s forwards cubic-bezier(.2,1.6,.4,1);
   }
-  @keyframes sellar{from{opacity:0;transform:rotate(-14deg) scale(2.4)}to{opacity:.92;transform:rotate(-14deg) scale(1)}}
-  .beneficios{border-top:2px dashed #D9CFE3;padding:16px 20px 76px;font-size:14.5px}
-  .beneficios b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:15px;margin-bottom:6px}
+  @keyframes sellar{from{opacity:0;transform:rotate(-12deg) scale(2.4)}to{opacity:1;transform:rotate(-12deg) scale(1)}}
+  .beneficios{border-top:3px solid var(--tinta);background:var(--papel);padding:18px 22px 82px;font-size:14.5px;font-weight:500}
+  .beneficios b{display:block;font:400 14px/1.2 "Archivo Black",sans-serif;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
   .beneficios ul{margin:0;padding-left:18px}
   .beneficios li{margin:3px 0}
 
-  .res-titulo{font:800 clamp(30px,7vw,42px)/1 "Bricolage Grotesque",sans-serif;text-align:center;margin:0 0 6px}
-  .res-bajada{text-align:center;color:var(--tinta-2);margin:0 0 6px}
-  .resumen{background:var(--papel);border:2px solid var(--tinta);border-radius:var(--radio);padding:18px 20px;margin-bottom:20px}
-  .resumen h3{font-family:"Bricolage Grotesque",sans-serif;margin:0 0 10px;font-size:18px}
+  .res-titulo{font:400 clamp(32px,8vw,46px)/1 "Archivo Black",sans-serif;text-transform:uppercase;text-align:center;margin:6px 0 8px}
+  .res-bajada{text-align:center;font-weight:600;margin:0 0 22px}
+  .resumen{background:var(--papel);padding:24px 24px}
+  .resumen h3{font:400 17px/1.1 "Archivo Black",sans-serif;text-transform:uppercase;margin:0 0 12px}
   .resumen dl{margin:0;display:grid;gap:8px}
-  .resumen dt{font-size:12.5px;color:var(--tinta-2);text-transform:uppercase;letter-spacing:.06em}
-  .resumen dd{margin:0 0 4px;font-weight:500}
-  .acciones{display:grid;gap:12px}
+  .resumen dt{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--verde-osc)}
+  .resumen dd{margin:0 0 4px;font-weight:600}
+  .acciones{display:grid;gap:14px}
   .btn{
     display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;cursor:pointer;
-    font:800 18px/1 "Bricolage Grotesque",sans-serif;border:2px solid var(--tinta);border-radius:16px;
-    padding:18px;box-shadow:var(--sombra);transition:transform .12s;
+    font:400 17px/1.1 "Archivo Black",sans-serif;text-transform:uppercase;letter-spacing:.02em;border:0;padding:20px;
+    transition:transform .12s;
   }
-  .btn:active{transform:translate(2px,2px)}
-  .btn.wa{background:#25D366;color:#0B2B17}
-  .btn.copiar{background:#fff;color:var(--tinta)}
-  .btn.otra{background:transparent;box-shadow:none;border-style:dashed;font-size:15px}
+  .btn:active{transform:scale(.98)}
+  .btn.wa{background:var(--tinta);color:var(--amarillo);clip-path:polygon(0 6%,98% 0,100% 90%,2% 100%)}
+  .btn.copiar{background:var(--amarillo);color:var(--tinta);clip-path:polygon(2% 0,100% 8%,98% 100%,0 92%)}
+  .btn.otra{background:transparent;color:var(--tinta);font-size:13.5px;text-decoration:underline;text-underline-offset:4px}
 
-  .pie{text-align:center;font-size:12.5px;color:var(--tinta-2);margin-top:40px}
+  .pie{text-align:center;font-size:12.5px;font-weight:600;color:var(--gris);margin-top:40px}
 
-  /* Lluvia de corazones */
+  /* Lluvia */
   .lluvia{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden}
   .lluvia i{position:absolute;top:-40px;font-style:normal;animation:caer linear forwards}
+  .lluvia i.pap{width:18px;height:12px;display:block}
   @keyframes caer{to{transform:translateY(110vh) rotate(260deg)}}
 
   @media (max-width:420px){
-    .wrap{padding:20px 14px 70px}
-    .preg{padding:20px 16px}
+    .wrap{padding:18px 12px 70px}
+    .cabecera{padding:30px 20px 32px}
+    .preg{padding:28px 20px 28px}
     .preg h2{font-size:20px}
-    .op span{font-size:15px;padding:9px 14px}
+    .op span{font-size:15px;padding:9px 13px}
     .cred-cuerpo{grid-template-columns:78px 1fr;gap:14px}
     .foto{width:78px;height:96px;font-size:38px}
-    .sello{font-size:19px;right:14px;bottom:16px}
+    .sello{font-size:19px}
     .cred-top{flex-direction:column;align-items:flex-start;gap:4px}
     .cred-top b{font-size:14px}
   }
@@ -268,21 +262,17 @@
 </head>
 <body>
 <div class="wrap">
-  <div class="franja" aria-hidden="true"></div>
-
+  <div class="bloque">
   <header class="cabecera">
-    <div class="patente" aria-hidden="true">
-      <div class="banda"><span>ARGENTINA</span><span>★</span></div>
-      <div class="numero">GAUCH1T0</div>
-    </div>
-    <div><span class="cartel"><span class="punto"></span>Búsqueda activa · 1 vacante</span></div>
+    <div><span class="etiqueta" aria-hidden="true">GAUCH1T0</span> <span class="cartel"><span class="punto"></span>Búsqueda activa · 1 vacante</span></div>
     <h1>Formulario para contratar al <em>chofer más lindo</em></h1>
     <p class="bajada">Se busca gauchita para el asiento de adelante. Música a elección (negociable). <b>Hay muchísimas postulantes</b> (mentira, sos vos sola, pero completalo igual).</p>
   </header>
+  </div>
 
   <div class="ruta" aria-live="polite">
     <div class="ruta-txt"><span id="km">Km 0 de 10</span><span id="frase">Arrancando el motor…</span></div>
-    <div class="asfalto"><span class="auto" id="auto">🚗</span><span class="meta">💛</span></div>
+    <div class="asfalto"><span class="auto" id="auto">🚗</span><span class="meta">🏁</span></div>
   </div>
 
   <form id="form" novalidate>
@@ -295,16 +285,16 @@
     <p class="res-titulo">¡Quedaste, gauchita! 🎉</p>
     <p class="res-bajada">El gauchito revisó tu postulación (la leyó tres veces) y no hubo nada que pensar.</p>
 
-    <div class="credencial">
+    <div class="bloque"><div class="credencial">
       <div class="cred-top"><b>Credencial de gauchita copiloto</b><span>N° 0001 · y única</span></div>
       <div class="cred-cuerpo">
-        <div class="foto" aria-hidden="true">😍</div>
+        <div class="foto" aria-hidden="true">🤠</div>
         <div>
           <p class="cred-nombre" id="cNombre">—</p>
           <p class="cred-dato">Puesto: <b id="cPuesto">—</b></p>
           <p class="cred-dato">Válida hasta: <b>para siempre</b></p>
           <p class="cred-dato">Calificación del gauchito:</p>
-          <div class="estrellas" aria-label="11 de 10 estrellas">⭐⭐⭐⭐⭐ <b>11/10</b></div>
+          <div class="estrellas" aria-label="11 de 10 estrellas">★★★★★ <b>11/10</b></div>
         </div>
       </div>
       <div class="beneficios">
@@ -317,13 +307,13 @@
           <li>Paradas a comprar facturas sin justificar.</li>
         </ul>
       </div>
-      <div class="sello">APROBADO</div>
-    </div>
+      <div class="sello">APROBADA</div>
+    </div></div>
 
-    <div class="resumen">
+    <div class="bloque"><div class="resumen recorte-2">
       <h3>Lo que respondiste</h3>
       <dl id="resumen"></dl>
-    </div>
+    </div></div>
 
     <div class="acciones">
       <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">Mandarle la postulación al gauchito 💬</a>
@@ -357,7 +347,7 @@
     {id:"mate", tipo:"mate", titulo:"¿Cómo cebás los mates?", ayuda:"Mové la bombilla. Sin mentir, que se nota en el primer sorbo."},
     {id:"musica", tipo:"radio", titulo:"¿Qué ponés de música en el auto?", ayuda:"Hay una respuesta correcta. Solo digo.", ops:["Cumbia para arrancar con todo","Rock nacional a los gritos","Pop triste para mirar por la ventana","Lo que el gauchito quiera ✅"]},
     {id:"besos", tipo:"besos", titulo:"¿Le das besos al chofer en los semáforos?", ayuda:"Pregunta clave del proceso de selección.", ops:["Sí, en todos los rojos","Sí, y en los PARE también","En el amarillo, por las dudas"]},
-    {id:"perdido", tipo:"radio", titulo:"El gauchito se pierde. ¿Qué hacés?", ayuda:"Pasa poco. Casi nunca. Bueno, a veces.", ops:["Abro el mapa sin decir nada, con amor","Le digo «yo te dije» (y no le dije nada)","Disfruto el paseo, total vamos juntos","Le doy un beso para que se concentre"]},
+    {id:"perdido", tipo:"radio", titulo:"El gauchito se pierde. ¿Qué hacés?", ayuda:"Pasa poco. Casi nunca. Bueno, a veces.", ops:["Abro el mapa sin decir nada","Le digo «yo te dije» (y no le dije nada)","Disfruto el paseo, total vamos juntos","Le doy un beso para que se concentre"]},
     {id:"snacks", tipo:"check", titulo:"¿Qué traés para el viaje?", ayuda:"Elegí todo lo que quieras. Cuanto más, mejor puntaje.", ops:["Bizcochitos","Alfajores","Facturas","Mandarinas peladas","Le doy de comer en la boca al gauchito"]},
     {id:"pago", tipo:"radio", titulo:"¿Cómo pagás el viaje?", ayuda:"Tarifa fija: un viaje, una sonrisa.", ops:["Efectivo","Transferencia","En besos","Abrazos en cuotas sin interés"]},
     {id:"disponibilidad", tipo:"radio", titulo:"Disponibilidad horaria", ayuda:"El chofer tiene el tanque lleno.", ops:["Fines de semana","Cuando haya mates","Las 24 horas","Toda la vida 🙈"]},
@@ -373,7 +363,7 @@
     [10,"Nivel abuela: no se discute 👵"]
   ];
 
-  var FRASES = ["Arrancando el motor…","Saliendo del garage","Primer semáforo 😘","Cargando nafta","A mitad de camino","Paramos por facturas","Ya se ve la ruta","Casi llegamos","Último peaje","Llegando…","¡Destino: contratación!"];
+  var FRASES = ["Arrancando el motor…","Saliendo del garage","Primer semáforo","Cargando nafta","A mitad de camino","Paramos por facturas","Ya se ve la ruta","Casi llegamos","Último peaje","Llegando…","¡Destino: contratación!"];
 
   var NO_TEXTOS = ["No","¿En serio?","Pensalo bien","No se puede","Ni lo intentes","Imposible"];
 
@@ -397,7 +387,7 @@
   }
 
   PREGUNTAS.forEach(function(p, idx){
-    var c = el("fieldset",{"class":"preg", id:"q-"+p.id});
+    var c = el("fieldset",{"class":"preg recorte-" + (idx % 4 + 1), id:"q-"+p.id});
     c.appendChild(el("span",{"class":"num"}, String(idx+1).padStart(2,"0")));
     var h = el("h2"); h.textContent = p.titulo; c.appendChild(h);
     var a = el("p",{"class":"ayuda"}); a.textContent = p.ayuda; c.appendChild(a);
@@ -457,7 +447,8 @@
     }
 
     c.appendChild(el("p",{"class":"falta"},"👀 El gauchito necesita saber esto."));
-    cont.appendChild(c);
+    var bloque = el("div",{"class":"bloque"}); bloque.appendChild(c);
+    cont.appendChild(bloque);
   });
 
   /* ---------- El "No" que se escapa ---------- */
@@ -599,7 +590,7 @@
 
   document.getElementById("copiar").addEventListener("click", function(){
     var b = this, txt = textoResumen();
-    function listo(){ b.textContent = "¡Copiado! Pegáselo al gauchito 💛"; }
+    function listo(){ b.textContent = "¡Copiado! Pegáselo al gauchito"; }
     try {
       navigator.clipboard.writeText(txt).then(listo, respaldo);
     } catch(err){ respaldo(); }
@@ -622,9 +613,11 @@
   function lluvia(){
     if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var capa = el("div",{"class":"lluvia","aria-hidden":"true"});
-    var cosas = ["💛","❤️","💋","🚗","🧉","✨","😘"];
-    for (var k = 0; k < 42; k++){
-      var i = el("i"); i.textContent = cosas[k % cosas.length];
+    var colores = ["#4F9A2E","#F3CF2B","#141414","#F4EEDD"], cosas = ["🧉","🚗","🤠"];
+    for (var k = 0; k < 54; k++){
+      var i = el("i");
+      if (k % 6 === 0) i.textContent = cosas[(k/6) % cosas.length];
+      else { i.className = "pap"; i.style.background = colores[k % colores.length]; i.style.clipPath = "polygon(0 " + (Math.random()*30) + "%,100% 0,"+ (70+Math.random()*30) + "% 100%,0 100%)"; }
       i.style.left = (Math.random()*100) + "vw";
       i.style.fontSize = (16 + Math.random()*20) + "px";
       i.style.animationDuration = (2.4 + Math.random()*2.4) + "s";
